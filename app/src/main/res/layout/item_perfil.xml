@@ -1,0 +1,50 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="10dp"
+    android:paddingLeft="10dp"
+    android:id="@+id/rlvLayoutItemPerfil">
+
+    <ImageView
+        android:layout_alignParentLeft="true"
+        android:id="@+id/iv_perfil"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginRight="6dp"
+        android:src="@null" />
+
+    <TextView
+        android:layout_toRightOf="@+id/iv_perfil"
+        android:id="@+id/tv_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:paddingRight="16dp"
+        android:textSize="16sp" />
+
+    <TextView
+        android:layout_below="@+id/tv_1"
+        android:layout_alignLeft="@+id/tv_1"
+        android:id="@+id/tv_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingRight="16dp"
+        android:textSize="12sp" />
+
+    <Button
+        android:id="@+id/btn_acessar_perfil"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_toRightOf="@+id/tv_2"
+        android:text="Acessar"/>
+
+    <View
+        android:id="@+id/vw_divider"
+        android:layout_marginTop="20dp"
+        android:layout_alignLeft="@+id/iv_perfil"
+        android:layout_below="@+id/btn_acessar_perfil"
+        android:background="@color/colorDivider"
+        android:layout_width="match_parent"
+        android:layout_height="0.8dp" />
+
+</RelativeLayout>

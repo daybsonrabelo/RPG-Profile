@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">RPG Profile</string>
+
+    <string name="urlStudio">www.prymos.com.br</string>
+    <string name="title_activity_perfil">PerfilActivity</string>
+
+    <string name="titulo_tela_perfil">Perfil</string>
+    <string name="lbl_per_nome">Nome</string>
+    <string name="lbl_per_jogador">Jogador</string>
+    <string name="lbl_per_cronica">Crônica</string>
+    <string name="lbl_per_natureza">Natureza</string>
+    <string name="lbl_per_comportamento">Comportamento</string>
+    <string name="lbl_per_cla">Clã</string>
+    <string name="lbl_per_geracao">Geração</string>
+    <string name="lbl_per_refugio">Refúgio</string>
+    <string name="lbl_per_conceito">Conceito</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_ficha">FichaActivity</string>
+    <string name="action_settings">Settings</string>
+    <string name="section_format">Hello World from section: %1$d</string>
+</resources>
