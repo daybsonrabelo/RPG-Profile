@@ -83,12 +83,10 @@ public class PerfilAdapter extends RecyclerView.Adapter<PerfilAdapter.PerfilView
 
         @Override
         public void onClick(View v) {
-
-
             Intent it = new Intent(v.getContext(), FichaActivity.class);
+            it.putExtra("codigo_perfil", codigo_perfil);
 
             context.startActivity(it);
-
         }
     }
 }

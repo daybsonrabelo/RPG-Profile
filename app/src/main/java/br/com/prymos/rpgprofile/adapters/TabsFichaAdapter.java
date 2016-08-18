@@ -13,8 +13,12 @@ import br.com.prymos.rpgprofile.fragments.VantagensFragment;
  */
 public class TabsFichaAdapter extends FragmentPagerAdapter {
 
-    public TabsFichaAdapter(FragmentManager fm) {
+    private long codigoperfil;
+
+    public TabsFichaAdapter(FragmentManager fm, long codigoperfil) {
         super(fm);
+
+        this.codigoperfil = codigoperfil;
     }
 
     @Override
@@ -24,13 +28,13 @@ public class TabsFichaAdapter extends FragmentPagerAdapter {
         //return PlaceholderFragment.newInstance(position + 1);
         switch (position) {
             case 0:
-                return AtributosFragment.newInstance("nada", "nada");
+                return AtributosFragment.newInstance("nada", "nada", codigoperfil);
             case 1:
                 return HabilidadesFragment.newInstance("nada", "nada");
             case 2:
                 return VantagensFragment.newInstance("nada", "nada");
             case 3:
-                return AtributosFragment.newInstance("nada", "nada");
+                return AtributosFragment.newInstance("nada", "nada", codigoperfil);
         }
         return null;
     }

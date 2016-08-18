@@ -15,8 +15,8 @@ import br.com.prymos.rpgprofile.extras.SlidingTabLayout;
 public class FichaActivity extends AppCompatActivity {
 
     private TabsFichaAdapter mTabsFichaAdapter;
-
     private ViewPager mViewPager;
+    private long codigo_perfil;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,7 +25,11 @@ public class FichaActivity extends AppCompatActivity {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        mTabsFichaAdapter = new TabsFichaAdapter(getSupportFragmentManager());
+        Bundle extras = getIntent().getExtras();
+
+        codigo_perfil = extras.getLong("codigo_perfil");
+
+        mTabsFichaAdapter = new TabsFichaAdapter(getSupportFragmentManager(), codigo_perfil);
 
         // Set up the ViewPager with the sections adapter.
         mViewPager = (ViewPager) findViewById(R.id.container);
