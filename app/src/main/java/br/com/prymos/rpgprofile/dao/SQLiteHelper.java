@@ -3,6 +3,7 @@ package br.com.prymos.rpgprofile.dao;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.provider.ContactsContract;
 import android.util.Log;
 
 /**
@@ -11,42 +12,33 @@ import android.util.Log;
 public class SQLiteHelper extends SQLiteOpenHelper {
 
     public static final String NOME_BANCO = "rpg_profile";
+    private static final int DATABASE_VERSION = 1;
     private static final String CATEGORIA = "SQLiteHelper";
-    private String[] scriptSQLCreate;
-    private String scriptSQLDelete;
 
     /***
      * Cria uma instância de SQLiteHelper
      *
      * @param context
-     * @param versaoBanco versão do bando de dados(se for diferente é para atualizar)
-     * @param scriptSQLCreate SQL para criar a tabela
-     * @param scriptSQLDelete SQL para apagar a tabela
      */
-    public SQLiteHelper(Context context, int versaoBanco, String[] scriptSQLCreate,
-                        String scriptSQLDelete) {
-        super(context, NOME_BANCO, null, versaoBanco);
-        this.scriptSQLCreate = scriptSQLCreate;
-        this.scriptSQLDelete = scriptSQLDelete;
+    public SQLiteHelper(Context context) {
+        super(context, NOME_BANCO, null, DATABASE_VERSION);
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        Log.i(CATEGORIA, "Criando a tabela na base de dados");
-        int qtdeScripts = scriptSQLCreate.length;
-        for (int i = 0; i < qtdeScripts; i++) {
-            String sql = scriptSQLCreate[i];
-            Log.i(CATEGORIA, sql);
-            db.execSQL(sql);
-        }
+        Log.i(CATEGORIA, "Criando as tabelas na base de dados");
+        db.execSQL(PerfilTable.CREATE);
+        db.execSQL(AtributosTable.CREATE);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        Log.w(CATEGORIA, "Atualizando da versão " + oldVersion + " para " +
-                newVersion + ". Todos os registros serão deletados.");
-        Log.i(CATEGORIA, scriptSQLDelete);
-        db.execSQL(scriptSQLDelete);
-        onCreate(db);
+        if(newVersion > oldVersion) {
+            Log.w(CATEGORIA, "Atualizando base de dados da versão " + oldVersion + " para " +
+                    newVersion + ". Todos os registros serão deletados.");
+            db.execSQL(PerfilTable.DROP);
+            db.execSQL(AtributosTable.DROP);
+            onCreate(db);
+        }
     }
 }

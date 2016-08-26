@@ -10,8 +10,8 @@ import android.util.Log;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
+import br.com.prymos.rpgprofile.dao.PerfilTable;
 import br.com.prymos.rpgprofile.dao.SQLiteHelper;
 import br.com.prymos.rpgprofile.models.Perfil_PER;
 
@@ -22,9 +22,12 @@ public class RepositorioPerfil {
     private static final String CATEGORIA = "RepositorioPerfil";
     private static final String NOME_TABELA = "Perfil_PER";
     protected SQLiteDatabase db;
+    private SQLiteHelper dbHelper;
 
     public RepositorioPerfil(Context context) {
+        dbHelper = new SQLiteHelper(context);
         db = context.openOrCreateDatabase(SQLiteHelper.NOME_BANCO, Context.MODE_PRIVATE, null);
+        db = dbHelper.getWritableDatabase();
     }
 
     protected RepositorioPerfil() {
@@ -88,24 +91,24 @@ public class RepositorioPerfil {
         String dataCadastro = sdf.format(perfil.getPER_DATA_CADASTRO());
 
         ContentValues values = new ContentValues();
-        values.put(Perfil_PER.Perfis.PER_NOME, perfil.getPER_NOME());
-        values.put(Perfil_PER.Perfis.PER_JOGADOR, perfil.getPER_JOGADOR());
-        values.put(Perfil_PER.Perfis.PER_CRONICA, perfil.getPER_CRONICA());
-        values.put(Perfil_PER.Perfis.PER_NATUREZA, perfil.getPER_NATUREZA());
-        values.put(Perfil_PER.Perfis.PER_COMPORTAMENTO, perfil.getPER_COMPORTAMENTO());
-        values.put(Perfil_PER.Perfis.PER_CLA, perfil.getPER_CLA());
-        values.put(Perfil_PER.Perfis.PER_GERACAO, perfil.getPER_GERACAO());
-        values.put(Perfil_PER.Perfis.PER_REFUGIO, perfil.getPER_REFUGIO());
-        values.put(Perfil_PER.Perfis.PER_CONCEITO, perfil.getPER_CONCEITO());
-        values.put(Perfil_PER.Perfis.PER_DATA_CADASTRO, dataCadastro);
-        values.put(Perfil_PER.Perfis.PER_PHOTO, perfil.getPER_PHOTO());
+        values.put(PerfilTable.PER_NOME, perfil.getPER_NOME());
+        values.put(PerfilTable.PER_JOGADOR, perfil.getPER_JOGADOR());
+        values.put(PerfilTable.PER_CRONICA, perfil.getPER_CRONICA());
+        values.put(PerfilTable.PER_NATUREZA, perfil.getPER_NATUREZA());
+        values.put(PerfilTable.PER_COMPORTAMENTO, perfil.getPER_COMPORTAMENTO());
+        values.put(PerfilTable.PER_CLA, perfil.getPER_CLA());
+        values.put(PerfilTable.PER_GERACAO, perfil.getPER_GERACAO());
+        values.put(PerfilTable.PER_REFUGIO, perfil.getPER_REFUGIO());
+        values.put(PerfilTable.PER_CONCEITO, perfil.getPER_CONCEITO());
+        values.put(PerfilTable.PER_DATA_CADASTRO, dataCadastro);
+        values.put(PerfilTable.PER_PHOTO, perfil.getPER_PHOTO());
 
         return values;
     }
 
     private Cursor getCursor() {
         try {
-            return db.query(NOME_TABELA, Perfil_PER.colunas, null, null, null, null, null, null);
+            return db.query(NOME_TABELA, PerfilTable.colunas, null, null, null, null, null, null);
         } catch (SQLException e) {
             Log.e(CATEGORIA, "Erro ao buscar os perfis: " + e.toString());
             return null;
@@ -116,18 +119,18 @@ public class RepositorioPerfil {
         Cursor c = getCursor();
         ArrayList<Perfil_PER> perfis = new ArrayList<Perfil_PER>();
         if (c.moveToFirst()) {
-            int idxCodigo = c.getColumnIndex(Perfil_PER.Perfis.PER_CODIGO_PERFIL);
-            int idxNome = c.getColumnIndex(Perfil_PER.Perfis.PER_NOME);
-            int idxJogador = c.getColumnIndex(Perfil_PER.Perfis.PER_JOGADOR);
-            int idxCronica = c.getColumnIndex(Perfil_PER.Perfis.PER_CRONICA);
-            int idxNatureza = c.getColumnIndex(Perfil_PER.Perfis.PER_NATUREZA);
-            int idxComportamento = c.getColumnIndex(Perfil_PER.Perfis.PER_COMPORTAMENTO);
-            int idxCla = c.getColumnIndex(Perfil_PER.Perfis.PER_CLA);
-            int idxGeracao = c.getColumnIndex(Perfil_PER.Perfis.PER_GERACAO);
-            int idxRefugio = c.getColumnIndex(Perfil_PER.Perfis.PER_REFUGIO);
-            int idxConceito = c.getColumnIndex(Perfil_PER.Perfis.PER_CONCEITO);
-            int idxDataCadastro = c.getColumnIndex(Perfil_PER.Perfis.PER_DATA_CADASTRO);
-            int idxPhoto = c.getColumnIndex(Perfil_PER.Perfis.PER_PHOTO);
+            int idxCodigo = c.getColumnIndex(PerfilTable.PER_CODIGO_PERFIL);
+            int idxNome = c.getColumnIndex(PerfilTable.PER_NOME);
+            int idxJogador = c.getColumnIndex(PerfilTable.PER_JOGADOR);
+            int idxCronica = c.getColumnIndex(PerfilTable.PER_CRONICA);
+            int idxNatureza = c.getColumnIndex(PerfilTable.PER_NATUREZA);
+            int idxComportamento = c.getColumnIndex(PerfilTable.PER_COMPORTAMENTO);
+            int idxCla = c.getColumnIndex(PerfilTable.PER_CLA);
+            int idxGeracao = c.getColumnIndex(PerfilTable.PER_GERACAO);
+            int idxRefugio = c.getColumnIndex(PerfilTable.PER_REFUGIO);
+            int idxConceito = c.getColumnIndex(PerfilTable.PER_CONCEITO);
+            int idxDataCadastro = c.getColumnIndex(PerfilTable.PER_DATA_CADASTRO);
+            int idxPhoto = c.getColumnIndex(PerfilTable.PER_PHOTO);
 
             do {
                 Perfil_PER perfil = new Perfil_PER();
@@ -152,22 +155,22 @@ public class RepositorioPerfil {
     }
 
     public Perfil_PER buscarPerfil(long id) {
-        Cursor c = db.query(true, NOME_TABELA, Perfil_PER.colunas, Perfil_PER.Perfis.PER_CODIGO_PERFIL + "=" + id, null, null, null, null, null);
+        Cursor c = db.query(true, NOME_TABELA, PerfilTable.colunas, PerfilTable.PER_CODIGO_PERFIL + "=" + id, null, null, null, null, null);
         if (c.getCount() > 0) {
             c.moveToFirst();
 
-            int idxCodigo = c.getColumnIndex(Perfil_PER.Perfis.PER_CODIGO_PERFIL);
-            int idxNome = c.getColumnIndex(Perfil_PER.Perfis.PER_NOME);
-            int idxJogador = c.getColumnIndex(Perfil_PER.Perfis.PER_JOGADOR);
-            int idxCronica = c.getColumnIndex(Perfil_PER.Perfis.PER_CRONICA);
-            int idxNatureza = c.getColumnIndex(Perfil_PER.Perfis.PER_NATUREZA);
-            int idxComportamento = c.getColumnIndex(Perfil_PER.Perfis.PER_COMPORTAMENTO);
-            int idxCla = c.getColumnIndex(Perfil_PER.Perfis.PER_CLA);
-            int idxGeracao = c.getColumnIndex(Perfil_PER.Perfis.PER_GERACAO);
-            int idxRefugio = c.getColumnIndex(Perfil_PER.Perfis.PER_REFUGIO);
-            int idxConceito = c.getColumnIndex(Perfil_PER.Perfis.PER_CONCEITO);
-            int idxDataCadastro = c.getColumnIndex(Perfil_PER.Perfis.PER_DATA_CADASTRO);
-            int idxPhoto = c.getColumnIndex(Perfil_PER.Perfis.PER_PHOTO);
+            int idxCodigo = c.getColumnIndex(PerfilTable.PER_CODIGO_PERFIL);
+            int idxNome = c.getColumnIndex(PerfilTable.PER_NOME);
+            int idxJogador = c.getColumnIndex(PerfilTable.PER_JOGADOR);
+            int idxCronica = c.getColumnIndex(PerfilTable.PER_CRONICA);
+            int idxNatureza = c.getColumnIndex(PerfilTable.PER_NATUREZA);
+            int idxComportamento = c.getColumnIndex(PerfilTable.PER_COMPORTAMENTO);
+            int idxCla = c.getColumnIndex(PerfilTable.PER_CLA);
+            int idxGeracao = c.getColumnIndex(PerfilTable.PER_GERACAO);
+            int idxRefugio = c.getColumnIndex(PerfilTable.PER_REFUGIO);
+            int idxConceito = c.getColumnIndex(PerfilTable.PER_CONCEITO);
+            int idxDataCadastro = c.getColumnIndex(PerfilTable.PER_DATA_CADASTRO);
+            int idxPhoto = c.getColumnIndex(PerfilTable.PER_PHOTO);
 
             Perfil_PER perfil = new Perfil_PER();
 
@@ -189,9 +192,22 @@ public class RepositorioPerfil {
         return null;
     }
 
+    public long buscarUltimoCodigoPerfil() {
+        Cursor c = db.rawQuery("SELECT Max(PER_CODIGO_PERFIL) FROM Perfil_PER", null);
+        long max = 0;
+        if (c != null) {
+            c.moveToFirst();
+            max = c.getLong(0);
+        }
+        return max;
+    }
+
     public void fechar() {
         if (db != null) {
             db.close();
+        }
+        if (dbHelper != null) {
+            dbHelper.close();
         }
     }
 }

@@ -15,7 +15,7 @@ import java.util.ArrayList;
 
 import br.com.prymos.rpgprofile.adapters.PerfilAdapter;
 import br.com.prymos.rpgprofile.models.Perfil_PER;
-import br.com.prymos.rpgprofile.repository.RepositorioPerfilScript;
+import br.com.prymos.rpgprofile.repository.RepositorioPerfil;
 
 public class ListaPerfilActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -120,8 +120,8 @@ public class ListaPerfilActivity extends AppCompatActivity implements View.OnCli
     }
 
     public void atualizarLista() {
-        RepositorioPerfilScript repositorioPerfilScript = new RepositorioPerfilScript(this);
-        listaPerfil = repositorioPerfilScript.listarPerfis();
+        RepositorioPerfil repositorioPerfil = new RepositorioPerfil(this);
+        listaPerfil = repositorioPerfil.listarPerfis();
 
         perfilAdapter = new PerfilAdapter(this, listaPerfil);
 

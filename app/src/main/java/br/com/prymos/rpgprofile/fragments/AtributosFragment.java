@@ -6,9 +6,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import br.com.prymos.rpgprofile.R;
 import br.com.prymos.rpgprofile.models.Atributos_ATR;
+import br.com.prymos.rpgprofile.repository.RepositorioAtributos;
 
 public class AtributosFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
@@ -21,6 +24,7 @@ public class AtributosFragment extends Fragment {
     private String mParam1;
     private String mParam2;
     private long mcodigoperfil;
+    private RepositorioAtributos repositorioAtributos;
 
     public AtributosFragment() {
         // Required empty public constructor
@@ -52,6 +56,7 @@ public class AtributosFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
             mcodigoperfil = getArguments().getLong(ARG_CODIGO_PERFIL);
+            repositorioAtributos = new RepositorioAtributos(getContext());
         }
     }
 
@@ -66,15 +71,44 @@ public class AtributosFragment extends Fragment {
 
             @Override
             public void onClick(View v) {
-                salvarAtributos();
+                salvarAtributos(getView());
+                Toast.makeText(getContext(), "Dados salvos.", Toast.LENGTH_SHORT).show();
             }
         });
 
         return view;
     }
 
-    private void salvarAtributos() {
-        Atributos_ATR atr = new Atributos_ATR();
+    private void salvarAtributos(View view) {
+        Atributos_ATR atr = repositorioAtributos.buscarAtributoPorPerfil(mcodigoperfil);
+
+
+        if (atr.getATR_CODIGO_ATRIBUTO() == 0) {
+            atr = new Atributos_ATR();
+        }
+
+        atr.setATR_FORCA(getIdxRadioGroup(view, R.id.rgForca));
+        atr.setATR_DESTREZA(getIdxRadioGroup(view, R.id.rgDestreza));
+        atr.setATR_VIGOR(getIdxRadioGroup(view, R.id.rgVigor));
+        atr.setATR_CARISMA(getIdxRadioGroup(view, R.id.rgCarisma));
+        atr.setATR_MANIPULACAO(getIdxRadioGroup(view, R.id.rgManipulacao));
+        atr.setATR_APARENCIA(getIdxRadioGroup(view, R.id.rgAparencia));
+        atr.setATR_PERCEPCAO(getIdxRadioGroup(view, R.id.rgPercepcao));
+        atr.setATR_INTELIGENCIA(getIdxRadioGroup(view, R.id.rgInteligencia));
+        atr.setATR_RACIOCINIO(getIdxRadioGroup(view, R.id.rgRaciocinio));
+        atr.setPER_CODIGO_PERFIL(mcodigoperfil);
+
+        repositorioAtributos.salvar(atr);
+    }
+
+    private int getIdxRadioGroup(View view, int idRadioGroup) {
+        RadioGroup radioGroup = (RadioGroup) view.findViewById(idRadioGroup);
+
+        int radioButtonID = radioGroup.getCheckedRadioButtonId();
+        View radioButton = radioGroup.findViewById(radioButtonID);
+        int idx = radioGroup.indexOfChild(radioButton);
+
+        return idx + 1;//TODO: Verificar se precisa acrescentar +1 no índice para salvar na base
     }
 
 }

@@ -1,6 +1,5 @@
 package br.com.prymos.rpgprofile.models;
 
-import android.net.Uri;
 import android.provider.BaseColumns;
 
 import java.util.Date;
@@ -9,10 +8,11 @@ import java.util.Date;
  * Created by daybson on 31/05/2016.
  */
 public class Perfil_PER {
-    public static String[] colunas = new String[] {Perfis.PER_CODIGO_PERFIL, Perfis.PER_NOME,
+    /*public static String[] colunas = new String[] {Perfis.PER_CODIGO_PERFIL, Perfis.PER_NOME,
             Perfis.PER_JOGADOR, Perfis.PER_CRONICA, Perfis.PER_NATUREZA, Perfis.PER_COMPORTAMENTO,
             Perfis.PER_CLA, Perfis.PER_GERACAO, Perfis.PER_REFUGIO, Perfis.PER_CONCEITO,
             Perfis.PER_DATA_CADASTRO, Perfis.PER_PHOTO};
+    */
 
     private long PER_CODIGO_PERFIL;
     private String PER_NOME;
@@ -123,7 +123,7 @@ public class Perfil_PER {
         this.PER_PHOTO = PER_PHOTO;
     }
 
-    public static final class Perfis implements BaseColumns {
+    /*public static final class Perfis implements BaseColumns {
         private Perfis() {
         }
 
@@ -142,6 +142,7 @@ public class Perfil_PER {
         public static final String PER_PHOTO = "PER_PHOTO";
 
     }
+    */
 
     @Override
     public String toString() {

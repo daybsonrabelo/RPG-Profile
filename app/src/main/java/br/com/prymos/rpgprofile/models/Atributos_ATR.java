@@ -6,10 +6,10 @@ import android.provider.BaseColumns;
  * Created by daybson on 15/06/2016.
  */
 public class Atributos_ATR {
-    public static String[] colunas = new String[] {Atributos.PER_CODIGO_PERFIL, Atributos.ATR_CODIGO_ATRIBUTO,
+    public static String[] colunas = new String[] {Atributos.ATR_CODIGO_ATRIBUTO,
             Atributos.ATR_FORCA, Atributos.ATR_DESTREZA, Atributos.ATR_VIGOR, Atributos.ATR_CARISMA,
             Atributos.ATR_MANIPULACAO, Atributos.ATR_APARENCIA, Atributos.ATR_PERCEPCAO,
-            Atributos.ATR_INTELIGENCIA, Atributos.ATR_RACIOCINIO};
+            Atributos.ATR_INTELIGENCIA, Atributos.ATR_RACIOCINIO, Atributos.PER_CODIGO_PERFIL};
 
     private long PER_CODIGO_PERFIL;
     private long ATR_CODIGO_ATRIBUTO;
@@ -112,10 +112,10 @@ public class Atributos_ATR {
     }
 
     public static final class Atributos implements BaseColumns {
-        private Atributos() {}
+        private Atributos() {
+        }
 
         public static final String DEFAULT_SORT_ORDER = "ATR_CODIGO_ATRIBUTO ASC";
-        public static final String PER_CODIGO_PERFIL = "PER_CODIGO_PERFIL";
         public static final String ATR_CODIGO_ATRIBUTO = "ATR_CODIGO_ATRIBUTO";
         public static final String ATR_FORCA = "ATR_FORCA";
         public static final String ATR_DESTREZA = "ATR_DESTREZA";
@@ -126,6 +126,7 @@ public class Atributos_ATR {
         public static final String ATR_PERCEPCAO = "ATR_PERCEPCAO";
         public static final String ATR_INTELIGENCIA = "ATR_INTELIGENCIA";
         public static final String ATR_RACIOCINIO = "ATR_RACIOCINIO";
+        public static final String PER_CODIGO_PERFIL = "PER_CODIGO_PERFIL";
     }
 
     @Override

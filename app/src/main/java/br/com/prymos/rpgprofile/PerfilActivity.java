@@ -23,7 +23,7 @@ import br.com.prymos.rpgprofile.adapters.SpinnerIconePerfilAdapter;
 import br.com.prymos.rpgprofile.extras.ValidateUtil;
 import br.com.prymos.rpgprofile.models.Icones;
 import br.com.prymos.rpgprofile.models.Perfil_PER;
-import br.com.prymos.rpgprofile.repository.RepositorioPerfilScript;
+import br.com.prymos.rpgprofile.repository.RepositorioPerfil;
 import me.drakeet.materialdialog.MaterialDialog;
 
 public class PerfilActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener, View.OnClickListener {
@@ -158,46 +158,20 @@ public class PerfilActivity extends AppCompatActivity implements AdapterView.OnI
                 builder.setNegativeButton("Não", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-
+                        //Não faz nada.
                     }
                 });
                 AlertDialog dialog = builder.create();
                 dialog.show();
-                /*
-                materialDialog = new MaterialDialog(this)
-                        .setTitle("Apagar Perfil")
-                        .setMessage("Deseja apagar este perfil")
-                        .setPositiveButton("Sim", new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                apagarPerfil();
-                                if (apagou) {
-                                    //PerfilActivity.this.setResult(2);
-                                    setResult(2);
-                                    //Intent it = new Intent(v.getContext(), ListaPerfilActivity.class);
-                                    //startActivity(it);
-                                    finish();
-                                }
-                            }
-                        })
-                        .setNegativeButton("Não", new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                materialDialog.dismiss();
-                            }
-                        });
-                materialDialog.show();
-                break;
-                */
                 break;
         }
-        //Toast.makeText(v.getContext(), aux, Toast.LENGTH_SHORT).show();
     }
 
     private void salvarPerfil() {
         Perfil_PER perfil;
-        RepositorioPerfilScript repositorioPerfilScript = new RepositorioPerfilScript(this);
+        RepositorioPerfil repositorioPerfil = new RepositorioPerfil(this);
 
+        //TODO: Ajustar pois quando atualiza não está pegando os dados do formulário(não atualiza nada).
         if (codigo == 0) {
             perfil = new Perfil_PER();
 
@@ -214,26 +188,25 @@ public class PerfilActivity extends AppCompatActivity implements AdapterView.OnI
 
             perfil.setPER_PHOTO(listaIcones.get(selecionado).getImageId());
         } else {
-            perfil = repositorioPerfilScript.buscarPerfil(codigo);
+            perfil = repositorioPerfil.buscarPerfil(codigo);
         }
 
         if (validateFields(perfil)) {
-            repositorioPerfilScript.salvar(perfil);
+            repositorioPerfil.salvar(perfil);
             Intent it = new Intent(this, FichaActivity.class);
+            long maxCodigoPerfil = repositorioPerfil.buscarUltimoCodigoPerfil();
+
+            it.putExtra("codigo_perfil", maxCodigoPerfil);
             startActivity(it);
             finish();
         }
     }
 
     private void apagarPerfil() {
-        RepositorioPerfilScript repositorioPerfilScript = new RepositorioPerfilScript(this);
+        RepositorioPerfil repositorioPerfilScript = new RepositorioPerfil(this);
         repositorioPerfilScript.deletar(codigo);
         //TODO: Verificar como voltar para a tela de listagem usando o setResult e atualizar os dados.
-
-        //setResult(RESULT_OK);
         finish();
-        //apagou = true;
-
     }
 
     private boolean validateFields(Perfil_PER perfil) {
@@ -313,8 +286,8 @@ public class PerfilActivity extends AppCompatActivity implements AdapterView.OnI
     }
 
     private void preencheCampos() {
-        RepositorioPerfilScript repositorioPerfilScript = new RepositorioPerfilScript(this);
-        Perfil_PER perfil = repositorioPerfilScript.buscarPerfil(codigo);
+        RepositorioPerfil repositorioPerfil = new RepositorioPerfil(this);
+        Perfil_PER perfil = repositorioPerfil.buscarPerfil(codigo);
 
         if (perfil != null) {
             //Nome

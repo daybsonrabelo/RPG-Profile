@@ -33,9 +33,7 @@ public class RepositorioVitalidadeScript extends RepositorioVitalidade {
     public SQLiteHelper dbHelper;
 
     public RepositorioVitalidadeScript(Context context) {
-        dbHelper = new SQLiteHelper(context, RepositorioVitalidadeScript.VERSAO_BANCO,
-                RepositorioVitalidadeScript.SCRIPT_DATABASE_CREATE,
-                RepositorioVitalidadeScript.SCRIPT_DATABASE_DELETE);
+        dbHelper = new SQLiteHelper(context);
         db = dbHelper.getWritableDatabase();
     }
 
