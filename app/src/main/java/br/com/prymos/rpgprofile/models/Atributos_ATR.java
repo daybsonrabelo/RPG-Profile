@@ -1,16 +1,9 @@
 package br.com.prymos.rpgprofile.models;
 
-import android.provider.BaseColumns;
-
 /**
  * Created by daybson on 15/06/2016.
  */
 public class Atributos_ATR {
-    public static String[] colunas = new String[] {Atributos.ATR_CODIGO_ATRIBUTO,
-            Atributos.ATR_FORCA, Atributos.ATR_DESTREZA, Atributos.ATR_VIGOR, Atributos.ATR_CARISMA,
-            Atributos.ATR_MANIPULACAO, Atributos.ATR_APARENCIA, Atributos.ATR_PERCEPCAO,
-            Atributos.ATR_INTELIGENCIA, Atributos.ATR_RACIOCINIO, Atributos.PER_CODIGO_PERFIL};
-
     private long PER_CODIGO_PERFIL;
     private long ATR_CODIGO_ATRIBUTO;
     private int ATR_FORCA;
@@ -109,24 +102,6 @@ public class Atributos_ATR {
 
     public void setATR_RACIOCINIO(int ATR_RACIOCINIO) {
         this.ATR_RACIOCINIO = ATR_RACIOCINIO;
-    }
-
-    public static final class Atributos implements BaseColumns {
-        private Atributos() {
-        }
-
-        public static final String DEFAULT_SORT_ORDER = "ATR_CODIGO_ATRIBUTO ASC";
-        public static final String ATR_CODIGO_ATRIBUTO = "ATR_CODIGO_ATRIBUTO";
-        public static final String ATR_FORCA = "ATR_FORCA";
-        public static final String ATR_DESTREZA = "ATR_DESTREZA";
-        public static final String ATR_VIGOR = "ATR_VIGOR";
-        public static final String ATR_CARISMA = "ATR_CARISMA";
-        public static final String ATR_MANIPULACAO = "ATR_MANIPULACAO";
-        public static final String ATR_APARENCIA = "ATR_APARENCIA";
-        public static final String ATR_PERCEPCAO = "ATR_PERCEPCAO";
-        public static final String ATR_INTELIGENCIA = "ATR_INTELIGENCIA";
-        public static final String ATR_RACIOCINIO = "ATR_RACIOCINIO";
-        public static final String PER_CODIGO_PERFIL = "PER_CODIGO_PERFIL";
     }
 
     @Override

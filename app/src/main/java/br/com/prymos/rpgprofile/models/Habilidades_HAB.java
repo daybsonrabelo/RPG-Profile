@@ -1,24 +1,9 @@
 package br.com.prymos.rpgprofile.models;
 
-import android.provider.BaseColumns;
-
 /**
  * Created by daybson on 15/06/2016.
  */
 public class Habilidades_HAB {
-
-    public static String[] colunas = new String[] {Habilidades.PER_CODIGO_PERFIL, Habilidades.HAB_CODIGO_HABILIDADE,
-            Habilidades.HAB_PRONTIDAO, Habilidades.HAB_ESPORTES, Habilidades.HAB_BRIGA,
-            Habilidades.HAB_ESQUIVA, Habilidades.HAB_EMPATIA, Habilidades.HAB_EXPRESSAO,
-            Habilidades.HAB_INTIMIDACAO, Habilidades.HAB_LIDERANCA, Habilidades.HAB_MANHA,
-            Habilidades.HAB_LABIA, Habilidades.HAB_EMPATIA_ANIMAIS, Habilidades.HAB_OFICIOS,
-            Habilidades.HAB_CONDUCAO, Habilidades.HAB_ETIQUETA, Habilidades.HAB_ARMAS_FOGO,
-            Habilidades.HAB_ARMAS_BRANCA, Habilidades.HAB_PERFORMANCE, Habilidades.HAB_SEGURANCA,
-            Habilidades.HAB_FURTIVIDADE, Habilidades.HAB_SOBREVIVENCIA, Habilidades.HAB_ACADEMICOS,
-            Habilidades.HAB_COMPUTADOR, Habilidades.HAB_FINANCAS, Habilidades.HAB_INVESTIGACAO,
-            Habilidades.HAB_DIREITO, Habilidades.HAB_LINGUISTICA, Habilidades.HAB_MEDICINA,
-            Habilidades.HAB_OCULTISMO, Habilidades.HAB_POLITICA, Habilidades.HAB_CIENCIA};
-
     private long PER_CODIGO_PERFIL;
     private long HAB_CODIGO_HABILIDADE;
     private int HAB_PRONTIDAO;
@@ -306,44 +291,6 @@ public class Habilidades_HAB {
 
     public void setHAB_CIENCIA(int HAB_CIENCIA) {
         this.HAB_CIENCIA = HAB_CIENCIA;
-    }
-
-    public static final class Habilidades implements BaseColumns {
-        private Habilidades() {}
-
-        public static final String DEFAULT_SORT_ORDER = "HAB_CODIGO_HABILIDADE ASC";
-        public static final String PER_CODIGO_PERFIL = "PER_CODIGO_PERFIL";
-        public static final String HAB_CODIGO_HABILIDADE = "HAB_CODIGO_HABILIDADE";
-        public static final String HAB_PRONTIDAO = "HAB_PRONTIDAO";
-        public static final String HAB_ESPORTES = "HAB_ESPORTES";
-        public static final String HAB_BRIGA = "HAB_BRIGA";
-        public static final String HAB_ESQUIVA = "HAB_ESQUIVA";
-        public static final String HAB_EMPATIA = "HAB_EMPATIA";
-        public static final String HAB_EXPRESSAO = "HAB_EXPRESSAO";
-        public static final String HAB_INTIMIDACAO = "HAB_INTIMIDACAO";
-        public static final String HAB_LIDERANCA = "HAB_LIDERANCA";
-        public static final String HAB_MANHA = "HAB_MANHA";
-        public static final String HAB_LABIA = "HAB_LABIA";
-        public static final String HAB_EMPATIA_ANIMAIS = "HAB_EMPATIA_ANIMAIS";
-        public static final String HAB_OFICIOS = "HAB_OFICIOS";
-        public static final String HAB_CONDUCAO = "HAB_CONDUCAO";
-        public static final String HAB_ETIQUETA = "HAB_ETIQUETA";
-        public static final String HAB_ARMAS_FOGO = "HAB_ARMAS_FOGO";
-        public static final String HAB_ARMAS_BRANCA = "HAB_ARMAS_BRANCA";
-        public static final String HAB_PERFORMANCE = "HAB_PERFORMANCE";
-        public static final String HAB_SEGURANCA = "HAB_SEGURANCA";
-        public static final String HAB_FURTIVIDADE = "HAB_FURTIVIDADE";
-        public static final String HAB_SOBREVIVENCIA = "HAB_SOBREVIVENCIA";
-        public static final String HAB_ACADEMICOS = "HAB_ACADEMICOS";
-        public static final String HAB_COMPUTADOR = "HAB_COMPUTADOR";
-        public static final String HAB_FINANCAS = "HAB_FINANCAS";
-        public static final String HAB_INVESTIGACAO = "HAB_INVESTIGACAO";
-        public static final String HAB_DIREITO = "HAB_DIREITO";
-        public static final String HAB_LINGUISTICA = "HAB_LINGUISTICA";
-        public static final String HAB_MEDICINA = "HAB_MEDICINA";
-        public static final String HAB_OCULTISMO = "HAB_OCULTISMO";
-        public static final String HAB_POLITICA = "HAB_POLITICA";
-        public static final String HAB_CIENCIA = "HAB_CIENCIA";
     }
 
     @Override

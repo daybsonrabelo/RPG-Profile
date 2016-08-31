@@ -192,6 +192,8 @@ public class RepositorioPerfil {
         return null;
     }
 
+    //TODO: Verificar se é realmente necessário
+    /*
     public long buscarUltimoCodigoPerfil() {
         Cursor c = db.rawQuery("SELECT Max(PER_CODIGO_PERFIL) FROM Perfil_PER", null);
         long max = 0;
@@ -201,6 +203,7 @@ public class RepositorioPerfil {
         }
         return max;
     }
+    */
 
     public void fechar() {
         if (db != null) {

@@ -20,7 +20,7 @@
         <activity android:name=".ListaPerfilActivity" />
         <activity
             android:name=".PerfilActivity"
-            android:label="@string/title_activity_perfil"
+            android:label="@string/titulo_tela_perfil"
             android:parentActivityName=".ListaPerfilActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -28,7 +28,7 @@
         </activity>
         <activity
             android:name=".FichaActivity"
-            android:label="@string/title_activity_ficha"
+            android:label="@string/titulo_tela_ficha"
             android:parentActivityName=".ListaPerfilActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"

@@ -33,32 +33,12 @@ public class AtributosTable implements BaseColumns {
             PER_CODIGO_PERFIL
     };
 
-    public static final String CREATE = String.format(
-            "CREATE TABLE %1$s (" +
-                    "%2$S INTEGER PRYMARY KEY AUTO_INCREMENT NOT NULL, " +
-                    "%3$S INTEGER, " +
-                    "%4$S INTEGER, " +
-                    "%5$S INTEGER, " +
-                    "%6$S INTEGER, " +
-                    "%7$S INTEGER, " +
-                    "%8$S INTEGER, " +
-                    "%9$S INTEGER, " +
-                    "%10$S INTEGER, " +
-                    "%11$S INTEGER, " +
-                    "%12$S INTEGER) ",
-            NAME,
-            ATR_CODIGO_ATRIBUTO,
-            ATR_FORCA,
-            ATR_DESTREZA,
-            ATR_VIGOR,
-            ATR_CARISMA,
-            ATR_MANIPULACAO,
-            ATR_APARENCIA,
-            ATR_PERCEPCAO,
-            ATR_INTELIGENCIA,
-            ATR_RACIOCINIO,
-            PER_CODIGO_PERFIL
-    );
+    public static final String CREATE = "CREATE TABLE " + NAME +
+            " (ATR_CODIGO_ATRIBUTO INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, " +
+            "ATR_FORCA INTEGER, ATR_DESTREZA INTEGER, ATR_VIGOR INTEGER, " +
+            "ATR_CARISMA INTEGER, ATR_MANIPULACAO INTEGER, ATR_APARENCIA INTEGER, " +
+            "ATR_PERCEPCAO INTEGER, ATR_INTELIGENCIA INTEGER, ATR_RACIOCINIO INTEGER, " +
+            "PER_CODIGO_PERFIL INTEGER NOT NULL); ";
 
-    public static final String DROP = String.format("DROP TABLE %1$s", NAME);
+    public static final String DROP = "DROP TABLE IF EXISTS " + NAME;
 }

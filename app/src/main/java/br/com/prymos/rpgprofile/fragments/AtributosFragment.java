@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
@@ -66,6 +67,8 @@ public class AtributosFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_atributos, container, false);
 
+        carregarAtributos(view);
+
         Button btnSalvarAtributos = (Button) view.findViewById(R.id.btnSalvarAtributos);
         btnSalvarAtributos.setOnClickListener(new View.OnClickListener() {
 
@@ -79,11 +82,25 @@ public class AtributosFragment extends Fragment {
         return view;
     }
 
+    private void carregarAtributos(View view) {
+        Atributos_ATR atr = repositorioAtributos.buscarAtributoPorPerfil(mcodigoperfil);
+        if (atr != null) {
+            setIdxRadioGroup(view, R.id.rgForca, atr.getATR_FORCA());
+            setIdxRadioGroup(view, R.id.rgDestreza, atr.getATR_DESTREZA());
+            setIdxRadioGroup(view, R.id.rgVigor, atr.getATR_VIGOR());
+            setIdxRadioGroup(view, R.id.rgCarisma, atr.getATR_CARISMA());
+            setIdxRadioGroup(view, R.id.rgManipulacao, atr.getATR_MANIPULACAO());
+            setIdxRadioGroup(view, R.id.rgAparencia, atr.getATR_APARENCIA());
+            setIdxRadioGroup(view, R.id.rgPercepcao, atr.getATR_PERCEPCAO());
+            setIdxRadioGroup(view, R.id.rgInteligencia, atr.getATR_INTELIGENCIA());
+            setIdxRadioGroup(view, R.id.rgRaciocinio, atr.getATR_RACIOCINIO());
+        }
+    }
+
     private void salvarAtributos(View view) {
         Atributos_ATR atr = repositorioAtributos.buscarAtributoPorPerfil(mcodigoperfil);
 
-
-        if (atr.getATR_CODIGO_ATRIBUTO() == 0) {
+        if (atr == null) {
             atr = new Atributos_ATR();
         }
 
@@ -108,7 +125,15 @@ public class AtributosFragment extends Fragment {
         View radioButton = radioGroup.findViewById(radioButtonID);
         int idx = radioGroup.indexOfChild(radioButton);
 
-        return idx + 1;//TODO: Verificar se precisa acrescentar +1 no índice para salvar na base
+        return idx + 1;
+    }
+
+    private void setIdxRadioGroup(View view, int idRadioGroup, int idx) {
+        idx = idx - 1;
+        if (idx >= 0) {
+            RadioGroup radioGroup = (RadioGroup) view.findViewById(idRadioGroup);
+            radioGroup.check(radioGroup.getChildAt(idx).getId());
+        }
     }
 
 }

@@ -1,19 +1,11 @@
 package br.com.prymos.rpgprofile.models;
 
-import android.provider.BaseColumns;
-
 import java.util.Date;
 
 /**
  * Created by daybson on 31/05/2016.
  */
 public class Perfil_PER {
-    /*public static String[] colunas = new String[] {Perfis.PER_CODIGO_PERFIL, Perfis.PER_NOME,
-            Perfis.PER_JOGADOR, Perfis.PER_CRONICA, Perfis.PER_NATUREZA, Perfis.PER_COMPORTAMENTO,
-            Perfis.PER_CLA, Perfis.PER_GERACAO, Perfis.PER_REFUGIO, Perfis.PER_CONCEITO,
-            Perfis.PER_DATA_CADASTRO, Perfis.PER_PHOTO};
-    */
-
     private long PER_CODIGO_PERFIL;
     private String PER_NOME;
     private String PER_JOGADOR;
@@ -122,27 +114,6 @@ public class Perfil_PER {
     public void setPER_PHOTO(int PER_PHOTO) {
         this.PER_PHOTO = PER_PHOTO;
     }
-
-    /*public static final class Perfis implements BaseColumns {
-        private Perfis() {
-        }
-
-        public static final String DEFAULT_SORT_ORDER = "PER_CODIGO_PERFIL ASC";
-        public static final String PER_CODIGO_PERFIL = "PER_CODIGO_PERFIL";
-        public static final String PER_NOME = "PER_NOME";
-        public static final String PER_JOGADOR = "PER_JOGADOR";
-        public static final String PER_CRONICA = "PER_CRONICA";
-        public static final String PER_NATUREZA = "PER_NATUREZA";
-        public static final String PER_COMPORTAMENTO = "PER_COMPORTAMENTO";
-        public static final String PER_CLA = "PER_CLA";
-        public static final String PER_GERACAO = "PER_GERACAO";
-        public static final String PER_REFUGIO = "PER_REFUGIO";
-        public static final String PER_CONCEITO = "PER_CONCEITO";
-        public static final String PER_DATA_CADASTRO = "PER_DATA_CADASTRO";
-        public static final String PER_PHOTO = "PER_PHOTO";
-
-    }
-    */
 
     @Override
     public String toString() {

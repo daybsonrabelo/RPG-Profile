@@ -30,7 +30,7 @@ public class TabsFichaAdapter extends FragmentPagerAdapter {
             case 0:
                 return AtributosFragment.newInstance("nada", "nada", codigoperfil);
             case 1:
-                return HabilidadesFragment.newInstance("nada", "nada");
+                return HabilidadesFragment.newInstance("nada", "nada", codigoperfil);
             case 2:
                 return VantagensFragment.newInstance("nada", "nada");
             case 3:

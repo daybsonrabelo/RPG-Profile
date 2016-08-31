@@ -29,6 +29,7 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         Log.i(CATEGORIA, "Criando as tabelas na base de dados");
         db.execSQL(PerfilTable.CREATE);
         db.execSQL(AtributosTable.CREATE);
+        db.execSQL(HabilidadesTable.CREATE);
     }
 
     @Override
@@ -38,6 +39,7 @@ public class SQLiteHelper extends SQLiteOpenHelper {
                     newVersion + ". Todos os registros serão deletados.");
             db.execSQL(PerfilTable.DROP);
             db.execSQL(AtributosTable.DROP);
+            db.execSQL(HabilidadesTable.DROP);
             onCreate(db);
         }
     }

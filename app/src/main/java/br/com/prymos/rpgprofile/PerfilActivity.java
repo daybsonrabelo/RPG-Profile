@@ -192,11 +192,11 @@ public class PerfilActivity extends AppCompatActivity implements AdapterView.OnI
         }
 
         if (validateFields(perfil)) {
-            repositorioPerfil.salvar(perfil);
+            long codigo_perfil;
+            codigo_perfil = repositorioPerfil.salvar(perfil);
             Intent it = new Intent(this, FichaActivity.class);
-            long maxCodigoPerfil = repositorioPerfil.buscarUltimoCodigoPerfil();
 
-            it.putExtra("codigo_perfil", maxCodigoPerfil);
+            it.putExtra("codigo_perfil", codigo_perfil);
             startActivity(it);
             finish();
         }
