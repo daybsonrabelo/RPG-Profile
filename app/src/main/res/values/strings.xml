@@ -6,6 +6,7 @@
 
     <string name="titulo_tela_perfil">Perfil</string>
     <string name="titulo_tela_ficha">Ficha</string>
+    <string name="titulo_tela_configuracoes">Configurações Ficha</string>
     <string name="lbl_per_nome">Nome</string>
     <string name="lbl_per_jogador">Jogador</string>
     <string name="lbl_per_cronica">Crônica</string>

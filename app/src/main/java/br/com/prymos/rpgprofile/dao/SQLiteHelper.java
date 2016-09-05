@@ -30,6 +30,7 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         db.execSQL(PerfilTable.CREATE);
         db.execSQL(AtributosTable.CREATE);
         db.execSQL(HabilidadesTable.CREATE);
+        db.execSQL(ConfiguracoesTable.CREATE);
     }
 
     @Override
@@ -40,6 +41,7 @@ public class SQLiteHelper extends SQLiteOpenHelper {
             db.execSQL(PerfilTable.DROP);
             db.execSQL(AtributosTable.DROP);
             db.execSQL(HabilidadesTable.DROP);
+            db.execSQL(ConfiguracoesTable.DROP);
             onCreate(db);
         }
     }
